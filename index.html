@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Muhammad Abubakar — Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #14161f;
+    --panel: #1c1f2b;
+    --panel-light: #232735;
+    --border: #2e3242;
+    --amber: #e8a33d;
+    --teal: #4f9d92;
+    --text: #e7e6e1;
+    --text-dim: #9a9daa;
+    --text-faint: #5f6272;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Manrope', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+  }
+
+  ::selection { background: var(--amber); color: var(--bg); }
+
+  a { color: var(--amber); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Nav ---------- */
+  nav {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(20, 22, 31, 0.92);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+  nav .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-mark {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--amber);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: var(--text-dim);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  /* ---------- Hero: shipment manifest card ---------- */
+  .hero { padding: 72px 0 48px; }
+
+  .manifest-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .manifest-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--panel-light);
+    border-bottom: 1px dashed var(--border);
+    padding: 10px 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .manifest-strip span.dot {
+    color: var(--teal);
+  }
+
+  .manifest-body {
+    padding: 40px 32px 36px;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  h1 .accent { color: var(--amber); }
+
+  .tagline {
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 560px;
+    margin-bottom: 28px;
+  }
+
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 11px 20px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    font-weight: 500;
+    transition: 0.15s;
+  }
+  .btn:hover { text-decoration: none; }
+  .btn-primary {
+    background: var(--amber);
+    color: var(--bg);
+    border-color: var(--amber);
+  }
+  .btn-primary:hover { background: #f2b458; }
+  .btn-secondary { color: var(--text); }
+  .btn-secondary:hover { border-color: var(--text-dim); background: var(--panel-light); }
+
+  .manifest-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-top: 26px;
+    border-top: 1px solid var(--border);
+  }
+  .meta-item .meta-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .meta-item .meta-value {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ---------- Section headers ---------- */
+  section { padding: 56px 0; border-top: 1px solid var(--border); }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+  .section-head h2 {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  /* ---------- About ---------- */
+  .about-text { color: var(--text-dim); font-size: 15.5px; max-width: 640px; }
+  .about-text p { margin-bottom: 14px; }
+  .about-text strong { color: var(--text); }
+
+  /* ---------- Skills ---------- */
+  .skill-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .skill-group {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px 20px;
+  }
+  .skill-group .g-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tags span {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text);
+    background: var(--panel-light);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+
+  /* ---------- Projects: ledger entries ---------- */
+  .ledger { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+
+  .ledger-header {
+    display: grid;
+    grid-template-columns: 90px 1fr 140px;
+    padding: 10px 20px;
+    background: var(--panel-light);
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .ledger-entry {
+    display: grid;
+    grid-template-columns: 90px 1fr 140px;
+    padding: 20px;
+    border-top: 1px solid var(--border);
+    background: var(--panel);
+    transition: 0.15s;
+  }
+  .ledger-entry:hover { background: var(--panel-light); }
+
+  .entry-id {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--amber);
+    align-self: start;
+    padding-top: 2px;
+  }
+
+  .entry-main h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  .entry-main h3 a { color: var(--text); }
+  .entry-main h3 a:hover { color: var(--amber); text-decoration: none; }
+  .entry-main p { color: var(--text-dim); font-size: 14px; margin-bottom: 10px; }
+  .entry-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .entry-tags span {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-dim);
+    background: var(--panel-light);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+
+  .entry-status {
+    align-self: start;
+    text-align: right;
+  }
+  .status-pill {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .status-live { background: rgba(79, 157, 146, 0.15); color: var(--teal); border: 1px solid rgba(79, 157, 146, 0.4); }
+  .status-freelance { background: rgba(232, 163, 61, 0.12); color: var(--amber); border: 1px solid rgba(232, 163, 61, 0.35); }
+
+  .entry-link {
+    display: block;
+    margin-top: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  /* ---------- Experience ---------- */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--border);
+  }
+  .exp-item:first-child { border-top: none; }
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    padding-top: 2px;
+  }
+  .exp-role h3 { font-size: 15.5px; margin-bottom: 6px; }
+  .exp-role p { color: var(--text-dim); font-size: 14px; }
+
+  /* ---------- Contact ---------- */
+  .contact-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px 32px;
+    text-align: center;
+  }
+  .contact-card h2 { font-size: 24px; margin-bottom: 10px; }
+  .contact-card p { color: var(--text-dim); margin-bottom: 24px; }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  footer {
+    padding: 32px 0 48px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 32px; }
+    .manifest-body { padding: 28px 20px; }
+    .manifest-meta { grid-template-columns: 1fr; gap: 14px; }
+    .ledger-header { display: none; }
+    .ledger-entry { grid-template-columns: 1fr; gap: 10px; }
+    .entry-status { text-align: left; }
+    .exp-item { grid-template-columns: 1fr; gap: 6px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 12.5px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+
+  a:focus-visible, .btn:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-mark">M.ABUBAKAR</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ================= HERO — manifest card ================= -->
+  <div class="hero">
+    <div class="manifest-card">
+      <div class="manifest-strip">
+        <span>Profile Manifest <span class="dot">●</span> Lahore, PK</span>
+        <span>Status: Open to Work</span>
+      </div>
+      <div class="manifest-body">
+        <div class="eyebrow">Software Developer</div>
+        <h1>Muhammad Abubakar<br>builds <span class="accent">full-stack</span> systems that ship.</h1>
+        <p class="tagline">
+          IT graduate with a year of freelance eCommerce development behind me — now
+          building backend-driven web applications with clean architecture and
+          real database design.
+        </p>
+        <div class="cta-row">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="https://github.com/muhammad-abubakar3009" class="btn btn-secondary" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/muhammad-abubakar3009/" class="btn btn-secondary" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+        <div class="manifest-meta">
+          <div class="meta-item">
+            <div class="meta-label">Education</div>
+            <div class="meta-value">BS IT — Univ. of Punjab</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Focus</div>
+            <div class="meta-value">Backend & Full-Stack</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Based In</div>
+            <div class="meta-value">Lahore, Pakistan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-text">
+      <p>
+        I graduated with a <strong>BS in Information Technology from the University of the Punjab</strong>,
+        with a strong foundation in <strong>Object-Oriented Programming, Data Structures & Algorithms,
+        and database design</strong>. Before that, I spent over a year freelancing —
+        building and customizing eCommerce stores on WordPress and Shopify, integrating
+        payment gateways, and managing SEO for client sites.
+      </p>
+      <p>
+        That freelance work taught me how real systems get used: inventory that has to
+        stay accurate, checkouts that can't break, data that has to be trustworthy.
+        I'm now applying that same practical instinct to full-stack development —
+        writing backend logic, designing databases, and building applications with
+        proper authentication and clean, modular code.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Skills</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <div class="g-label">Core CS</div>
+        <div class="skill-tags">
+          <span>OOP</span><span>DSA</span><span>C++</span><span>Python</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="g-label">Backend & Data</div>
+        <div class="skill-tags">
+          <span>Node.js</span><span>Express</span><span>MySQL</span><span>SQLite</span><span>REST APIs</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="g-label">Web & eCommerce</div>
+        <div class="skill-tags">
+          <span>WordPress</span><span>Shopify</span><span>WooCommerce</span><span>SEO</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="g-label">Tools</div>
+        <div class="skill-tags">
+          <span>Git</span><span>GitHub</span><span>VS Code</span><span>cPanel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS — ledger ================= -->
+  <section id="projects">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Projects</h2>
+    </div>
+    <div class="ledger">
+      <div class="ledger-header">
+        <div>ID</div>
+        <div>Entry</div>
+        <div>Status</div>
+      </div>
+
+      <div class="ledger-entry">
+        <div class="entry-id">#001</div>
+        <div class="entry-main">
+          <h3><a href="https://github.com/muhammad-abubakar3009/inventory-manager" target="_blank" rel="noopener">Inventory Manager</a></h3>
+          <p>Full-stack inventory management app with session-based authentication,
+             password hashing, and complete CRUD functionality. Each user's data is
+             isolated and persisted in a SQL database.</p>
+          <div class="entry-tags">
+            <span>Node.js</span><span>Express</span><span>SQLite</span><span>REST API</span>
+          </div>
+          <a class="entry-link" href="https://github.com/muhammad-abubakar3009/inventory-manager" target="_blank" rel="noopener">View repository →</a>
+        </div>
+        <div class="entry-status">
+          <span class="status-pill status-live">Shipped</span>
+        </div>
+      </div>
+
+      <div class="ledger-entry">
+        <div class="entry-id">#002</div>
+        <div class="entry-main">
+          <h3>Smart Resume Screening System</h3>
+          <p>Final year project — screens and ranks resumes against job requirements
+             using sorting algorithms, with a modular OOP design across Candidate,
+             Job, and Screening Engine classes.</p>
+          <div class="entry-tags">
+            <span>Python</span><span>OOP</span><span>Sorting Algorithms</span>
+          </div>
+        </div>
+        <div class="entry-status">
+          <span class="status-pill status-freelance">Academic</span>
+        </div>
+      </div>
+
+      <div class="ledger-entry">
+        <div class="entry-id">#003</div>
+        <div class="entry-main">
+          <h3>eCommerce Store Builds</h3>
+          <p>Developed and customized multiple online stores using WooCommerce and
+             Shopify — payment gateway integration, shipping rule configuration,
+             and inventory/order management for freelance clients.</p>
+          <div class="entry-tags">
+            <span>WordPress</span><span>Shopify</span><span>WooCommerce</span>
+          </div>
+        </div>
+        <div class="entry-status">
+          <span class="status-pill status-freelance">Freelance</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Experience</h2>
+    </div>
+    <div>
+      <div class="exp-item">
+        <div class="exp-date">2024 — 2025</div>
+        <div class="exp-role">
+          <h3>Freelance Web Developer</h3>
+          <p>WordPress theme customization, plugin integration, WooCommerce setup,
+             Shopify store builds, payment gateway & shipping integration, and
+             basic SEO optimization for client eCommerce stores.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">2021 — 2025</div>
+        <div class="exp-role">
+          <h3>BS Information Technology — University of the Punjab</h3>
+          <p>Core coursework in OOP, DSA, database management, and programming
+             fundamentals. Final year project: Smart Resume Screening System.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="contact-card">
+      <h2>Let's work together</h2>
+      <p>Open to Associate Software Engineer and full-stack developer roles in Lahore.</p>
+      <div class="contact-links">
+        <a href="mailto:abubakaarmughal@gmail.com" class="btn btn-primary">Email Me</a>
+        <a href="https://www.linkedin.com/in/muhammad-abubakar3009/" class="btn btn-secondary" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/muhammad-abubakar3009" class="btn btn-secondary" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>Built by Muhammad Abubakar — Lahore, Pakistan</footer>
+
+</body>
+</html>
