@@ -3,31 +3,52 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Muhammad Abubakar — Software Developer</title>
+<title>Muhammad Abubakar — Full-Stack Developer</title>
+<meta name="description" content="Muhammad Abubakar — Full-stack developer in Lahore. BSCS graduate, freelance eCommerce background, building with the MERN stack." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #14161f;
-    --panel: #1c1f2b;
-    --panel-light: #232735;
-    --border: #2e3242;
+    --bg: #0e1015;
+    --panel: #171a22;
+    --panel-light: #1e222c;
+    --border: #2b303d;
     --amber: #e8a33d;
-    --teal: #4f9d92;
-    --text: #e7e6e1;
+    --amber-soft: #f2b458;
+    --teal: #4fb0a3;
+    --text: #edece7;
     --text-dim: #9a9daa;
-    --text-faint: #5f6272;
+    --text-faint: #5c6070;
     --mono: 'JetBrains Mono', monospace;
     --sans: 'Manrope', sans-serif;
+    --radius: 5px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html { scroll-behavior: smooth; }
+
   body {
     background: var(--bg);
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-attachment: fixed;
+    background-position: center -1px;
     color: var(--text);
     font-family: var(--sans);
     line-height: 1.6;
+    opacity: 0.999; /* isolate bg pattern from scroll repaint jitter on some browsers */
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 900px 500px at 50% -10%, rgba(232,163,61,0.08), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   ::selection { background: var(--amber); color: var(--bg); }
@@ -35,325 +56,236 @@
   a { color: var(--amber); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
-  .wrap {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
   /* ---------- Nav ---------- */
   nav {
     border-bottom: 1px solid var(--border);
-    padding: 20px 0;
+    padding: 18px 0;
     position: sticky;
     top: 0;
-    background: rgba(20, 22, 31, 0.92);
-    backdrop-filter: blur(8px);
+    background: rgba(14, 16, 21, 0.88);
+    backdrop-filter: blur(10px);
     z-index: 100;
   }
-  nav .wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; }
   .nav-mark {
     font-family: var(--mono);
     font-size: 13px;
     color: var(--amber);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .nav-links { display: flex; gap: 28px; }
-  .nav-links a {
-    color: var(--text-dim);
-    font-size: 14px;
-    font-weight: 500;
+  .nav-mark .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 0 3px rgba(79,176,163,0.15);
   }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a { color: var(--text-dim); font-size: 13.5px; font-weight: 500; }
   .nav-links a:hover { color: var(--text); text-decoration: none; }
 
-  /* ---------- Hero: shipment manifest card ---------- */
-  .hero { padding: 72px 0 48px; }
-
-  .manifest-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
+  /* ---------- Hero ---------- */
+  .hero { padding: 88px 0 40px; }
+  .eyebrow-row {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 12px;
+    color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 22px;
   }
-
-  .manifest-strip {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--panel-light);
-    border-bottom: 1px dashed var(--border);
-    padding: 10px 24px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-faint);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  .eyebrow-row .sep { color: var(--text-faint); }
+  .eyebrow-row .status-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--teal);
+    animation: pulse 2s infinite;
   }
-  .manifest-strip span.dot {
-    color: var(--teal);
-  }
-
-  .manifest-body {
-    padding: 40px 32px 36px;
-  }
-
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--teal);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.35; }
   }
 
   h1 {
-    font-size: 42px;
+    font-size: clamp(38px, 6vw, 60px);
     font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    margin-bottom: 16px;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    max-width: 780px;
   }
   h1 .accent { color: var(--amber); }
+  h1 .dim { color: var(--text-faint); }
 
   .tagline {
     font-size: 17px;
     color: var(--text-dim);
     max-width: 560px;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
 
-  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
-
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
   .btn {
-    font-family: var(--mono);
-    font-size: 13px;
-    padding: 11px 20px;
-    border-radius: 3px;
-    border: 1px solid var(--border);
-    font-weight: 500;
-    transition: 0.15s;
+    font-family: var(--mono); font-size: 13px;
+    padding: 12px 22px; border-radius: 3px;
+    border: 1px solid var(--border); font-weight: 500;
+    transition: 0.15s; display: inline-flex; align-items: center; gap: 6px;
   }
   .btn:hover { text-decoration: none; }
-  .btn-primary {
-    background: var(--amber);
-    color: var(--bg);
-    border-color: var(--amber);
-  }
-  .btn-primary:hover { background: #f2b458; }
+  .btn-primary { background: var(--amber); color: var(--bg); border-color: var(--amber); }
+  .btn-primary:hover { background: var(--amber-soft); }
   .btn-secondary { color: var(--text); }
   .btn-secondary:hover { border-color: var(--text-dim); background: var(--panel-light); }
 
-  .manifest-meta {
+  /* Capability row — numbered because it maps to an actual stack sequence: backend core -> frontend layer -> commerce layer -> foundations */
+  .capabilities {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding-top: 26px;
+    grid-template-columns: repeat(4, 1fr);
     border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
   }
-  .meta-item .meta-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-faint);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 4px;
+  .cap {
+    padding: 20px 18px 20px 0;
+    border-right: 1px solid var(--border);
   }
-  .meta-item .meta-value {
-    font-size: 14px;
-    color: var(--text);
-    font-weight: 500;
-  }
+  .cap:last-child { border-right: none; padding-right: 0; }
+  .cap:not(:first-child) { padding-left: 18px; }
+  .cap-num { font-family: var(--mono); font-size: 11px; color: var(--amber); margin-bottom: 8px; display: block; }
+  .cap-label { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.35; }
 
   /* ---------- Section headers ---------- */
-  section { padding: 56px 0; border-top: 1px solid var(--border); }
-
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-  .section-num {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-faint);
-  }
-  .section-head h2 {
-    font-size: 22px;
-    font-weight: 700;
-  }
+  section { padding: 64px 0; border-top: 1px solid var(--border); }
+  .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 30px; }
+  .section-num { font-family: var(--mono); font-size: 12px; color: var(--text-faint); }
+  .section-head h2 { font-size: 23px; font-weight: 700; }
+  .section-sub { font-family: var(--mono); font-size: 11px; color: var(--text-faint); margin-left: auto; text-transform: uppercase; letter-spacing: 0.06em; }
 
   /* ---------- About ---------- */
-  .about-text { color: var(--text-dim); font-size: 15.5px; max-width: 640px; }
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
+  .about-text { color: var(--text-dim); font-size: 15.5px; }
   .about-text p { margin-bottom: 14px; }
   .about-text strong { color: var(--text); }
 
+  .stat-stack { display: flex; flex-direction: column; gap: 14px; }
+  .stat-card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+  .stat-card .stat-value { font-family: var(--mono); font-size: 22px; color: var(--amber); font-weight: 700; }
+  .stat-card .stat-label { font-size: 12.5px; color: var(--text-faint); margin-top: 3px; }
+
   /* ---------- Skills ---------- */
-  .skill-groups {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-  }
-  .skill-group {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 18px 20px;
-  }
+  .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+  .skill-group { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
   .skill-group .g-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--teal);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 10px;
+    font-family: var(--mono); font-size: 11px; color: var(--teal);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;
   }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .skill-tags span {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text);
-    background: var(--panel-light);
-    border: 1px solid var(--border);
-    padding: 4px 10px;
-    border-radius: 3px;
+    font-family: var(--mono); font-size: 12px; color: var(--text);
+    background: var(--panel-light); border: 1px solid var(--border);
+    padding: 4px 10px; border-radius: 3px;
   }
 
-  /* ---------- Projects: ledger entries ---------- */
-  .ledger { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-
+  /* ---------- Projects: ledger ---------- */
+  .ledger { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
   .ledger-header {
-    display: grid;
-    grid-template-columns: 90px 1fr 140px;
-    padding: 10px 20px;
-    background: var(--panel-light);
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-faint);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    display: grid; grid-template-columns: 74px 1fr 130px;
+    padding: 10px 20px; background: var(--panel-light);
+    font-family: var(--mono); font-size: 10px; color: var(--text-faint);
+    text-transform: uppercase; letter-spacing: 0.08em;
   }
-
   .ledger-entry {
-    display: grid;
-    grid-template-columns: 90px 1fr 140px;
-    padding: 20px;
-    border-top: 1px solid var(--border);
-    background: var(--panel);
-    transition: 0.15s;
+    display: grid; grid-template-columns: 74px 1fr 130px;
+    padding: 22px 20px; border-top: 1px solid var(--border);
+    background: var(--panel); transition: 0.15s;
   }
   .ledger-entry:hover { background: var(--panel-light); }
-
-  .entry-id {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--amber);
-    align-self: start;
-    padding-top: 2px;
-  }
-
-  .entry-main h3 {
-    font-size: 16px;
-    margin-bottom: 6px;
-  }
+  .entry-id { font-family: var(--mono); font-size: 12px; color: var(--amber); padding-top: 2px; }
+  .entry-main h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
   .entry-main h3 a { color: var(--text); }
   .entry-main h3 a:hover { color: var(--amber); text-decoration: none; }
-  .entry-main p { color: var(--text-dim); font-size: 14px; margin-bottom: 10px; }
-  .entry-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .entry-main p { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; max-width: 520px; }
+  .entry-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
   .entry-tags span {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    color: var(--text-dim);
-    background: var(--panel-light);
-    border: 1px solid var(--border);
-    padding: 2px 8px;
-    border-radius: 3px;
+    font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+    background: var(--panel-light); border: 1px solid var(--border);
+    padding: 2px 8px; border-radius: 3px;
   }
-
-  .entry-status {
-    align-self: start;
-    text-align: right;
-  }
+  .entry-link { font-family: var(--mono); font-size: 12.5px; }
+  .entry-status { text-align: right; }
   .status-pill {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-family: var(--mono); font-size: 10.5px; padding: 4px 10px;
+    border-radius: 3px; text-transform: uppercase; letter-spacing: 0.05em;
+    display: inline-block; border: 1px solid var(--border);
   }
-  .status-live { background: rgba(79, 157, 146, 0.15); color: var(--teal); border: 1px solid rgba(79, 157, 146, 0.4); }
-  .status-freelance { background: rgba(232, 163, 61, 0.12); color: var(--amber); border: 1px solid rgba(232, 163, 61, 0.35); }
+  .status-live { color: var(--teal); border-color: rgba(79,176,163,0.4); background: rgba(79,176,163,0.08); }
+  .status-freelance { color: var(--amber); border-color: rgba(232,163,61,0.4); background: rgba(232,163,61,0.08); }
+  .status-progress { color: var(--text-dim); border-color: var(--border); background: var(--panel-light); }
 
-  .entry-link {
-    display: block;
-    margin-top: 10px;
-    font-family: var(--mono);
-    font-size: 12px;
+  /* ---------- Journey: timeline ---------- */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px;
+    width: 1px; background: var(--border);
   }
-
-  /* ---------- Experience ---------- */
-  .exp-item {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 20px;
-    padding: 18px 0;
-    border-top: 1px solid var(--border);
+  .tl-item { position: relative; padding-bottom: 34px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -28px; top: 4px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--amber);
   }
-  .exp-item:first-child { border-top: none; }
-  .exp-date {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-faint);
-    padding-top: 2px;
+  .tl-item.current::before { border-color: var(--teal); box-shadow: 0 0 0 4px rgba(79,176,163,0.15); }
+  .tl-date {
+    font-family: var(--mono); font-size: 11px; color: var(--text-faint);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
   }
-  .exp-role h3 { font-size: 15.5px; margin-bottom: 6px; }
-  .exp-role p { color: var(--text-dim); font-size: 14px; }
+  .tl-item h3 { font-size: 15.5px; font-weight: 700; margin-bottom: 6px; }
+  .tl-item p { font-size: 14px; color: var(--text-dim); max-width: 560px; }
 
   /* ---------- Contact ---------- */
   .contact-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 36px 32px;
-    text-align: center;
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 44px 40px;
   }
-  .contact-card h2 { font-size: 24px; margin-bottom: 10px; }
-  .contact-card p { color: var(--text-dim); margin-bottom: 24px; }
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
+  .contact-card .eyebrow {
+    font-family: var(--mono); font-size: 12px; color: var(--teal);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
   }
+  .contact-card h2 { font-size: 30px; font-weight: 800; margin-bottom: 14px; letter-spacing: -0.01em; }
+  .contact-card > p { color: var(--text-dim); font-size: 15px; max-width: 540px; margin-bottom: 28px; }
+  .contact-links { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+  .contact-meta {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    padding-top: 26px; border-top: 1px solid var(--border);
+  }
+  .cm-label { font-family: var(--mono); font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .cm-value { font-size: 13.5px; color: var(--text); font-weight: 500; }
+  .cm-value.live { color: var(--teal); }
 
   footer {
-    padding: 32px 0 48px;
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-faint);
+    padding: 32px 0 48px; text-align: center;
+    font-family: var(--mono); font-size: 12px; color: var(--text-faint);
   }
 
-  @media (max-width: 640px) {
-    h1 { font-size: 32px; }
-    .manifest-body { padding: 28px 20px; }
-    .manifest-meta { grid-template-columns: 1fr; gap: 14px; }
+  @media (max-width: 720px) {
+    .capabilities { grid-template-columns: repeat(2, 1fr); }
+    .cap:nth-child(2n) { border-right: none; }
+    .cap:nth-child(3), .cap:nth-child(4) { border-top: 1px solid var(--border); padding-top: 20px; }
+    .about-grid { grid-template-columns: 1fr; }
     .ledger-header { display: none; }
     .ledger-entry { grid-template-columns: 1fr; gap: 10px; }
+    .entry-id { display: none; }
     .entry-status { text-align: left; }
-    .exp-item { grid-template-columns: 1fr; gap: 6px; }
-    .nav-links { gap: 16px; }
-    .nav-links a { font-size: 12.5px; }
+    .manifest-meta, .contact-meta { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 12px; }
+    .contact-card { padding: 32px 24px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
   }
 
   a:focus-visible, .btn:focus-visible {
@@ -366,12 +298,13 @@
 
 <nav>
   <div class="wrap">
-    <div class="nav-mark">M.ABUBAKAR</div>
+    <div class="nav-mark"><span class="dot"></span>M.ABUBAKAR</div>
     <div class="nav-links">
+      <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
+      <a href="#journey">Journey</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -379,41 +312,33 @@
 
 <div class="wrap">
 
-  <!-- ================= HERO — manifest card ================= -->
-  <div class="hero">
-    <div class="manifest-card">
-      <div class="manifest-strip">
-        <span>Profile Manifest <span class="dot">●</span> Lahore, PK</span>
-        <span>Status: Open to Work</span>
-      </div>
-      <div class="manifest-body">
-        <div class="eyebrow">Software Developer</div>
-        <h1>Muhammad Abubakar<br>builds <span class="accent">full-stack</span> systems that ship.</h1>
-        <p class="tagline">
-          CS graduate with a year of freelance eCommerce development behind me — now
-          building backend-driven web applications with clean architecture and
-          real database design.
-        </p>
-        <div class="cta-row">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="https://github.com/muhammad-abubakar3009" class="btn btn-secondary" target="_blank" rel="noopener">GitHub ↗</a>
-          <a href="https://www.linkedin.com/in/muhammad-abubakar3009/" class="btn btn-secondary" target="_blank" rel="noopener">LinkedIn ↗</a>
-        </div>
-        <div class="manifest-meta">
-          <div class="meta-item">
-            <div class="meta-label">Education</div>
-            <div class="meta-value">BS CS — Univ. of Punjab</div>
-          </div>
-          <div class="meta-item">
-            <div class="meta-label">Focus</div>
-            <div class="meta-value">Backend & Full-Stack</div>
-          </div>
-          <div class="meta-item">
-            <div class="meta-label">Based In</div>
-            <div class="meta-value">Lahore, Pakistan</div>
-          </div>
-        </div>
-      </div>
+  <!-- ================= HERO ================= -->
+  <div class="hero" id="home">
+    <div class="eyebrow-row">
+      <span class="status-dot"></span> Open to Work
+      <span class="sep">/</span> Lahore, PK
+      <span class="sep">/</span> Full-Stack Developer
+    </div>
+
+    <h1>Muhammad Abubakar<br>ships <span class="accent">full-stack</span> systems<br><span class="dim">that hold up.</span></h1>
+
+    <p class="tagline">
+      CS graduate with over a year of freelance eCommerce development behind me —
+      now building backend-driven web applications on the MERN stack, with clean
+      architecture and database design that doesn't fall over in production.
+    </p>
+
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="https://github.com/muhammad-abubakar3009" class="btn btn-secondary" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/muhammad-abubakar3009/" class="btn btn-secondary" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+
+    <div class="capabilities">
+      <div class="cap"><span class="cap-num">01</span><span class="cap-label">Backend & APIs<br><span style="color:var(--text-faint); font-weight:400;">Node.js, Express, REST</span></span></div>
+      <div class="cap"><span class="cap-num">02</span><span class="cap-label">Full-Stack (MERN)<br><span style="color:var(--text-faint); font-weight:400;">React, MongoDB — in progress</span></span></div>
+      <div class="cap"><span class="cap-num">03</span><span class="cap-label">eCommerce Systems<br><span style="color:var(--text-faint); font-weight:400;">WordPress, Shopify, WooCommerce</span></span></div>
+      <div class="cap"><span class="cap-num">04</span><span class="cap-label">CS Foundations<br><span style="color:var(--text-faint); font-weight:400;">DSA, OOP, SQL</span></span></div>
     </div>
   </div>
 
@@ -422,22 +347,35 @@
     <div class="section-head">
       <span class="section-num">01</span>
       <h2>About</h2>
+      <span class="section-sub">Behind the build</span>
     </div>
-    <div class="about-text">
-      <p>
-        I graduated with a <strong>BS in Computer Science from the University of the Punjab</strong>,
-        with a strong foundation in <strong>Object-Oriented Programming, Data Structures & Algorithms,
-        and database design</strong>. Before that, I spent over a year freelancing —
-        building and customizing eCommerce stores on WordPress and Shopify, integrating
-        payment gateways, and managing SEO for client sites.
-      </p>
-      <p>
-        That freelance work taught me how real systems get used: inventory that has to
-        stay accurate, checkouts that can't break, data that has to be trustworthy.
-        I'm now applying that same practical instinct to full-stack development —
-        writing backend logic, designing databases, and building applications with
-        proper authentication and clean, modular code.
-      </p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I graduated with a <strong>BS in Computer Science from the University of the
+          Punjab (PUCIT)</strong>, with a strong foundation in object-oriented programming,
+          data structures & algorithms, and database design. Before that, I spent over
+          a year freelancing — building and customizing eCommerce stores on WordPress
+          and Shopify, integrating payment gateways, and managing SEO for a US-based client.
+        </p>
+        <p>
+          That freelance work taught me how real systems get used: inventory that has
+          to stay accurate, checkouts that can't break, data that has to be trustworthy.
+          I'm now applying that same practical instinct to full-stack development —
+          teaching myself the <strong>MERN stack</strong>, writing backend logic, and
+          building applications with proper authentication and clean, modular code.
+        </p>
+        <p>
+          My final year project, a <strong>Personalized Gym Workout Recommendation and
+          Training Split Management System</strong>, pulled together everything from that
+          degree — data modeling, recommendation logic, and a real user-facing application.
+        </p>
+      </div>
+      <div class="stat-stack">
+        <div class="stat-card"><div class="stat-value">3.29</div><div class="stat-label">Final CGPA — BSCS, PUCIT</div></div>
+        <div class="stat-card"><div class="stat-value">1+ yr</div><div class="stat-label">Freelance eCommerce dev</div></div>
+        <div class="stat-card"><div class="stat-value">MERN</div><div class="stat-label">Current focus — self-taught</div></div>
+      </div>
     </div>
   </section>
 
@@ -450,43 +388,35 @@
     <div class="skill-groups">
       <div class="skill-group">
         <div class="g-label">Core CS</div>
-        <div class="skill-tags">
-          <span>OOP</span><span>DSA</span><span>C++</span><span>Python</span>
-        </div>
+        <div class="skill-tags"><span>OOP</span><span>DSA</span><span>C++</span><span>Python</span></div>
       </div>
       <div class="skill-group">
         <div class="g-label">Backend & Data</div>
-        <div class="skill-tags">
-          <span>Node.js</span><span>Express</span><span>MySQL</span><span>SQLite</span><span>REST APIs</span>
-        </div>
+        <div class="skill-tags"><span>Node.js</span><span>Express</span><span>MongoDB</span><span>MySQL</span><span>SQLite</span><span>REST APIs</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="g-label">Frontend</div>
+        <div class="skill-tags"><span>React</span><span>JavaScript</span><span>HTML/CSS</span><span>Tailwind</span></div>
       </div>
       <div class="skill-group">
         <div class="g-label">Web & eCommerce</div>
-        <div class="skill-tags">
-          <span>WordPress</span><span>Shopify</span><span>WooCommerce</span><span>SEO</span>
-        </div>
+        <div class="skill-tags"><span>WordPress</span><span>Shopify</span><span>WooCommerce</span><span>SEO</span></div>
       </div>
       <div class="skill-group">
         <div class="g-label">Tools</div>
-        <div class="skill-tags">
-          <span>Git</span><span>GitHub</span><span>VS Code</span><span>cPanel</span>
-        </div>
+        <div class="skill-tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>cPanel</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ================= PROJECTS — ledger ================= -->
+  <!-- ================= PROJECTS ================= -->
   <section id="projects">
     <div class="section-head">
       <span class="section-num">03</span>
       <h2>Projects</h2>
     </div>
     <div class="ledger">
-      <div class="ledger-header">
-        <div>ID</div>
-        <div>Entry</div>
-        <div>Status</div>
-      </div>
+      <div class="ledger-header"><div>ID</div><div>Entry</div><div>Status</div></div>
 
       <div class="ledger-entry">
         <div class="entry-id">#001</div>
@@ -495,14 +425,10 @@
           <p>Full-stack inventory management app with session-based authentication,
              password hashing, and complete CRUD functionality. Each user's data is
              isolated and persisted in a SQL database.</p>
-          <div class="entry-tags">
-            <span>Node.js</span><span>Express</span><span>SQLite</span><span>REST API</span>
-          </div>
+          <div class="entry-tags"><span>Node.js</span><span>Express</span><span>SQLite</span><span>REST API</span></div>
           <a class="entry-link" href="https://github.com/muhammad-abubakar3009/inventory-manager" target="_blank" rel="noopener">View repository →</a>
         </div>
-        <div class="entry-status">
-          <span class="status-pill status-live">Shipped</span>
-        </div>
+        <div class="entry-status"><span class="status-pill status-live">Shipped</span></div>
       </div>
 
       <div class="ledger-entry">
@@ -512,30 +438,22 @@
           <p>Console-based system demonstrating OOP and DSA fundamentals — binary
              search by ISBN, sorting by title/year, and file-based persistence,
              built with the C++ standard library only.</p>
-          <div class="entry-tags">
-            <span>C++</span><span>OOP</span><span>Binary Search</span><span>File I/O</span>
-          </div>
+          <div class="entry-tags"><span>C++</span><span>OOP</span><span>Binary Search</span><span>File I/O</span></div>
           <a class="entry-link" href="https://github.com/muhammad-abubakar3009/library-management-cpp" target="_blank" rel="noopener">View repository →</a>
         </div>
-        <div class="entry-status">
-          <span class="status-pill status-live">Shipped</span>
-        </div>
+        <div class="entry-status"><span class="status-pill status-live">Shipped</span></div>
       </div>
 
       <div class="ledger-entry">
         <div class="entry-id">#003</div>
         <div class="entry-main">
-          <h3>Smart Resume Screening System</h3>
-          <p>Final year project — screens and ranks resumes against job requirements
-             using sorting algorithms, with a modular OOP design across Candidate,
-             Job, and Screening Engine classes.</p>
-          <div class="entry-tags">
-            <span>Python</span><span>OOP</span><span>Sorting Algorithms</span>
-          </div>
+          <h3>Personalized Gym Workout Recommendation & Training Split Management System</h3>
+          <p>Final year project — recommends personalized workout splits and tracks
+             training progress, with a modular design across user, program, and
+             recommendation logic.</p>
+          <div class="entry-tags"><span>Full-Stack</span><span>Recommendation Logic</span><span>OOP</span></div>
         </div>
-        <div class="entry-status">
-          <span class="status-pill status-freelance">Academic</span>
-        </div>
+        <div class="entry-status"><span class="status-pill status-freelance">Academic</span></div>
       </div>
 
       <div class="ledger-entry">
@@ -543,55 +461,78 @@
         <div class="entry-main">
           <h3>eCommerce Store Builds</h3>
           <p>Developed and customized multiple online stores using WooCommerce and
-             Shopify — payment gateway integration, shipping rule configuration,
-             and inventory/order management for freelance clients.</p>
-          <div class="entry-tags">
-            <span>WordPress</span><span>Shopify</span><span>WooCommerce</span>
-          </div>
+             Shopify for a US-based client — payment gateway integration, shipping
+             rule configuration, and inventory/order management.</p>
+          <div class="entry-tags"><span>WordPress</span><span>Shopify</span><span>WooCommerce</span></div>
         </div>
-        <div class="entry-status">
-          <span class="status-pill status-freelance">Freelance</span>
+        <div class="entry-status"><span class="status-pill status-freelance">Freelance</span></div>
+      </div>
+
+      <div class="ledger-entry">
+        <div class="entry-id">#005</div>
+        <div class="entry-main">
+          <h3>MERN Stack Build-Up</h3>
+          <p>Working through React fundamentals, hooks, routing, and API integration
+             toward full MERN projects — using the Inventory Manager as the throughline
+             for backend-to-frontend integration.</p>
+          <div class="entry-tags"><span>React</span><span>MongoDB</span><span>Express</span><span>Node.js</span></div>
         </div>
+        <div class="entry-status"><span class="status-pill status-progress">In Progress</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ================= EXPERIENCE ================= -->
-  <section id="experience">
+  <!-- ================= JOURNEY ================= -->
+  <section id="journey">
     <div class="section-head">
       <span class="section-num">04</span>
-      <h2>Experience</h2>
+      <h2>Journey</h2>
     </div>
-    <div>
-      <div class="exp-item">
-        <div class="exp-date">2024 — 2026</div>
-        <div class="exp-role">
-          <h3>Freelance Web Developer</h3>
-          <p>WordPress theme customization, plugin integration, WooCommerce setup,
-             Shopify store builds, payment gateway & shipping integration, and
-             basic SEO optimization for client eCommerce stores.</p>
-        </div>
+    <div class="timeline">
+      <div class="tl-item current">
+        <div class="tl-date">2026 — Now</div>
+        <h3>Pivoting to Full-Stack / MERN</h3>
+        <p>Self-teaching the MERN stack, building portfolio projects, and applying to
+           Junior Software Engineer and Full-Stack Developer roles in Lahore.</p>
       </div>
-      <div class="exp-item">
-        <div class="exp-date">2021 — 2025</div>
-        <div class="exp-role">
-          <h3>BS Computer Science — University of the Punjab</h3>
-          <p>Core coursework in OOP, DSA, database management, and programming
-             fundamentals. Final year project: Smart Resume Screening System.</p>
-        </div>
+      <div class="tl-item">
+        <div class="tl-date">2024 — 2026</div>
+        <h3>Freelance Web Developer</h3>
+        <p>WordPress theme customization, plugin integration, WooCommerce setup,
+           Shopify store builds, payment gateway & shipping integration, and SEO
+           for a US-based client.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2021 — 2025</div>
+        <h3>BS Computer Science — University of the Punjab (PUCIT)</h3>
+        <p>Core coursework in OOP, DSA, database management, and programming
+           fundamentals. Final CGPA 3.29. Final year project: Personalized Gym
+           Workout Recommendation and Training Split Management System.</p>
       </div>
     </div>
   </section>
 
   <!-- ================= CONTACT ================= -->
   <section id="contact">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>Contact</h2>
+    </div>
     <div class="contact-card">
-      <h2>Let's work together</h2>
-      <p>Open to Associate Software Engineer and full-stack developer roles in Lahore.</p>
+      <div class="eyebrow">Get in touch</div>
+      <h2>Let's build something.</h2>
+      <p>Open to Junior Software Engineer and Full-Stack Developer roles in Lahore —
+         happy to talk about a role, a project, or anything MERN.</p>
       <div class="contact-links">
         <a href="mailto:abubakaarmughal@gmail.com" class="btn btn-primary">Email Me</a>
-        <a href="https://www.linkedin.com/in/muhammad-abubakar3009/" class="btn btn-secondary" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="https://github.com/muhammad-abubakar3009" class="btn btn-secondary" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/muhammad-abubakar3009/" class="btn btn-secondary" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+      <div class="contact-meta">
+        <div><div class="cm-label">Primary Email</div><div class="cm-value">abubakaarmughal@gmail.com</div></div>
+        <div><div class="cm-label">Location</div><div class="cm-value">Lahore, Pakistan</div></div>
+        <div><div class="cm-label">Positioning</div><div class="cm-value">Full-Stack / MERN Developer</div></div>
+        <div><div class="cm-label">Status</div><div class="cm-value live">● Open to Work</div></div>
       </div>
     </div>
   </section>
