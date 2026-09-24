@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Muhammad Abubakar — Full-Stack Developer</title>
-<meta name="description" content="Muhammad Abubakar — Full-stack developer in Lahore. BSCS graduate, freelance eCommerce background, building with the MERN stack." />
+<meta name="description" content="Muhammad Abubakar — Full-stack developer in Lahore. BSCS graduate, freelance eCommerce background, building full-stack applications with Node.js, Express, PostgreSQL, Prisma, and React." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -40,7 +40,7 @@
     color: var(--text);
     font-family: var(--sans);
     line-height: 1.6;
-    opacity: 0.999; /* isolate bg pattern from scroll repaint jitter on some browsers */
+    opacity: 0.999;
   }
   body::before {
     content: "";
@@ -58,7 +58,6 @@
 
   .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
-  /* ---------- Nav ---------- */
   nav {
     border-bottom: 1px solid var(--border);
     padding: 18px 0;
@@ -87,7 +86,6 @@
   .nav-links a { color: var(--text-dim); font-size: 13.5px; font-weight: 500; }
   .nav-links a:hover { color: var(--text); text-decoration: none; }
 
-  /* ---------- Hero ---------- */
   .hero { padding: 88px 0 40px; }
   .eyebrow-row {
     display: flex; align-items: center; gap: 10px;
@@ -135,7 +133,6 @@
   .btn-secondary { color: var(--text); }
   .btn-secondary:hover { border-color: var(--text-dim); background: var(--panel-light); }
 
-  /* Capability row — numbered because it maps to an actual stack sequence: backend core -> frontend layer -> commerce layer -> foundations */
   .capabilities {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -151,14 +148,12 @@
   .cap-num { font-family: var(--mono); font-size: 11px; color: var(--amber); margin-bottom: 8px; display: block; }
   .cap-label { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.35; }
 
-  /* ---------- Section headers ---------- */
   section { padding: 64px 0; border-top: 1px solid var(--border); }
   .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 30px; }
   .section-num { font-family: var(--mono); font-size: 12px; color: var(--text-faint); }
   .section-head h2 { font-size: 23px; font-weight: 700; }
   .section-sub { font-family: var(--mono); font-size: 11px; color: var(--text-faint); margin-left: auto; text-transform: uppercase; letter-spacing: 0.06em; }
 
-  /* ---------- About ---------- */
   .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
   .about-text { color: var(--text-dim); font-size: 15.5px; }
   .about-text p { margin-bottom: 14px; }
@@ -172,7 +167,6 @@
   .stat-card .stat-value { font-family: var(--mono); font-size: 22px; color: var(--amber); font-weight: 700; }
   .stat-card .stat-label { font-size: 12.5px; color: var(--text-faint); margin-top: 3px; }
 
-  /* ---------- Skills ---------- */
   .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
   .skill-group { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
   .skill-group .g-label {
@@ -186,7 +180,6 @@
     padding: 4px 10px; border-radius: 3px;
   }
 
-  /* ---------- Projects: ledger ---------- */
   .ledger { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
   .ledger-header {
     display: grid; grid-template-columns: 74px 1fr 130px;
@@ -222,7 +215,6 @@
   .status-freelance { color: var(--amber); border-color: rgba(232,163,61,0.4); background: rgba(232,163,61,0.08); }
   .status-progress { color: var(--text-dim); border-color: var(--border); background: var(--panel-light); }
 
-  /* ---------- Journey: timeline ---------- */
   .timeline { position: relative; padding-left: 28px; }
   .timeline::before {
     content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px;
@@ -243,7 +235,6 @@
   .tl-item h3 { font-size: 15.5px; font-weight: 700; margin-bottom: 6px; }
   .tl-item p { font-size: 14px; color: var(--text-dim); max-width: 560px; }
 
-  /* ---------- Contact ---------- */
   .contact-card {
     background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
     padding: 44px 40px;
@@ -312,7 +303,6 @@
 
 <div class="wrap">
 
-  <!-- ================= HERO ================= -->
   <div class="hero" id="home">
     <div class="eyebrow-row">
       <span class="status-dot"></span> Open to Work
@@ -324,8 +314,9 @@
 
     <p class="tagline">
       CS graduate with over a year of freelance eCommerce development behind me —
-      now building backend-driven web applications on the MERN stack, with clean
-      architecture and database design that doesn't fall over in production.
+      now building backend-driven web applications with Node.js, Express, PostgreSQL,
+      Prisma, and React, with clean architecture and database design that doesn't
+      fall over in production.
     </p>
 
     <div class="cta-row">
@@ -336,13 +327,12 @@
 
     <div class="capabilities">
       <div class="cap"><span class="cap-num">01</span><span class="cap-label">Backend & APIs<br><span style="color:var(--text-faint); font-weight:400;">Node.js, Express, REST</span></span></div>
-      <div class="cap"><span class="cap-num">02</span><span class="cap-label">Full-Stack (MERN)<br><span style="color:var(--text-faint); font-weight:400;">React, MongoDB — in progress</span></span></div>
+      <div class="cap"><span class="cap-num">02</span><span class="cap-label">Full-Stack Systems<br><span style="color:var(--text-faint); font-weight:400;">React, PostgreSQL, Prisma</span></span></div>
       <div class="cap"><span class="cap-num">03</span><span class="cap-label">eCommerce Systems<br><span style="color:var(--text-faint); font-weight:400;">WordPress, Shopify, WooCommerce</span></span></div>
       <div class="cap"><span class="cap-num">04</span><span class="cap-label">CS Foundations<br><span style="color:var(--text-faint); font-weight:400;">DSA, OOP, SQL</span></span></div>
     </div>
   </div>
 
-  <!-- ================= ABOUT ================= -->
   <section id="about">
     <div class="section-head">
       <span class="section-num">01</span>
@@ -361,9 +351,10 @@
         <p>
           That freelance work taught me how real systems get used: inventory that has
           to stay accurate, checkouts that can't break, data that has to be trustworthy.
-          I'm now applying that same practical instinct to full-stack development —
-          teaching myself the <strong>MERN stack</strong>, writing backend logic, and
-          building applications with proper authentication and clean, modular code.
+          I've since applied that same practical instinct to full-stack development —
+          most recently building <strong>Salon OS</strong>, a full-stack salon management
+          platform with JWT authentication, role-based access control, and transactional
+          data integrity, built solo from database schema to UI.
         </p>
         <p>
           My final year project, a <strong>Smart Resume Screening System</strong>, pulled together everything from that
@@ -373,12 +364,11 @@
       <div class="stat-stack">
         <div class="stat-card"><div class="stat-value">3.29</div><div class="stat-label">Final CGPA — BSCS, PUCIT</div></div>
         <div class="stat-card"><div class="stat-value">1+ yr</div><div class="stat-label">Freelance eCommerce dev</div></div>
-        <div class="stat-card"><div class="stat-value">MERN</div><div class="stat-label">Current focus — self-taught</div></div>
+        <div class="stat-card"><div class="stat-value">Shipped</div><div class="stat-label">Full-stack SaaS — Salon OS</div></div>
       </div>
     </div>
   </section>
 
-  <!-- ================= SKILLS ================= -->
   <section id="skills">
     <div class="section-head">
       <span class="section-num">02</span>
@@ -391,7 +381,7 @@
       </div>
       <div class="skill-group">
         <div class="g-label">Backend & Data</div>
-        <div class="skill-tags"><span>Node.js</span><span>Express</span><span>MongoDB</span><span>MySQL</span><span>SQLite</span><span>REST APIs</span></div>
+        <div class="skill-tags"><span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>Prisma</span><span>MongoDB</span><span>MySQL</span><span>SQLite</span><span>REST APIs</span><span>JWT / Auth</span></div>
       </div>
       <div class="skill-group">
         <div class="g-label">Frontend</div>
@@ -403,12 +393,11 @@
       </div>
       <div class="skill-group">
         <div class="g-label">Tools</div>
-        <div class="skill-tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>cPanel</span></div>
+        <div class="skill-tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>Postman</span><span>cPanel</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ================= PROJECTS ================= -->
   <section id="projects">
     <div class="section-head">
       <span class="section-num">03</span>
@@ -419,6 +408,20 @@
 
       <div class="ledger-entry">
         <div class="entry-id">#001</div>
+        <div class="entry-main">
+          <h3><a href="https://github.com/muhammad-abubakar3009/salon-operating-system" target="_blank" rel="noopener">Salon OS — Full-Stack Salon Management Platform</a></h3>
+          <p>A complete salon operations SaaS, not just a booking tool — client CRM, appointment
+             scheduling, a color-formula history feature, owner-controlled staff management with
+             role-based access control, and an inventory system using atomic database transactions
+             to keep stock counts and audit logs consistent. Designed and built solo, schema to UI.</p>
+          <div class="entry-tags"><span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>Prisma</span><span>React</span><span>JWT Auth</span><span>RBAC</span></div>
+          <a class="entry-link" href="https://github.com/muhammad-abubakar3009/salon-operating-system" target="_blank" rel="noopener">View repository →</a>
+        </div>
+        <div class="entry-status"><span class="status-pill status-live">Shipped</span></div>
+      </div>
+
+      <div class="ledger-entry">
+        <div class="entry-id">#002</div>
         <div class="entry-main">
           <h3><a href="https://github.com/muhammad-abubakar3009/inventory-manager" target="_blank" rel="noopener">Inventory Manager</a></h3>
           <p>Full-stack inventory management app with session-based authentication,
@@ -431,7 +434,7 @@
       </div>
 
       <div class="ledger-entry">
-        <div class="entry-id">#002</div>
+        <div class="entry-id">#003</div>
         <div class="entry-main">
           <h3><a href="https://github.com/muhammad-abubakar3009/library-management-cpp" target="_blank" rel="noopener">Library Management System</a></h3>
           <p>Console-based system demonstrating OOP and DSA fundamentals — binary
@@ -444,7 +447,7 @@
       </div>
 
       <div class="ledger-entry">
-        <div class="entry-id">#003</div>
+        <div class="entry-id">#004</div>
         <div class="entry-main">
           <h3>Smart Resume Screening System</h3>
           <p>Final year project — screens and ranks resumes against job requirements
@@ -456,7 +459,7 @@
       </div>
 
       <div class="ledger-entry">
-        <div class="entry-id">#004</div>
+        <div class="entry-id">#005</div>
         <div class="entry-main">
           <h3>eCommerce Store Builds</h3>
           <p>Developed and customized multiple online stores using WooCommerce and
@@ -466,22 +469,9 @@
         </div>
         <div class="entry-status"><span class="status-pill status-freelance">Freelance</span></div>
       </div>
-
-      <div class="ledger-entry">
-        <div class="entry-id">#005</div>
-        <div class="entry-main">
-          <h3>MERN Stack Build-Up</h3>
-          <p>Working through React fundamentals, hooks, routing, and API integration
-             toward full MERN projects — using the Inventory Manager as the throughline
-             for backend-to-frontend integration.</p>
-          <div class="entry-tags"><span>React</span><span>MongoDB</span><span>Express</span><span>Node.js</span></div>
-        </div>
-        <div class="entry-status"><span class="status-pill status-progress">In Progress</span></div>
-      </div>
     </div>
   </section>
 
-  <!-- ================= JOURNEY ================= -->
   <section id="journey">
     <div class="section-head">
       <span class="section-num">04</span>
@@ -490,9 +480,10 @@
     <div class="timeline">
       <div class="tl-item current">
         <div class="tl-date">2026 — Now</div>
-        <h3>Pivoting to Full-Stack / MERN</h3>
-        <p>Self-teaching the MERN stack, building portfolio projects, and applying to
-           Junior Software Engineer and Full-Stack Developer roles in Lahore.</p>
+        <h3>Full-Stack Development</h3>
+        <p>Built Salon OS, a full-stack salon management SaaS, end to end — schema design,
+           REST API, authentication, and a React frontend. Applying to Junior Software
+           Engineer and Full-Stack Developer roles in Lahore.</p>
       </div>
       <div class="tl-item">
         <div class="tl-date">2024 — 2026</div>
@@ -511,7 +502,6 @@
     </div>
   </section>
 
-  <!-- ================= CONTACT ================= -->
   <section id="contact">
     <div class="section-head">
       <span class="section-num">05</span>
@@ -521,7 +511,7 @@
       <div class="eyebrow">Get in touch</div>
       <h2>Let's build something.</h2>
       <p>Open to Junior Software Engineer and Full-Stack Developer roles in Lahore —
-         happy to talk about a role, a project, or anything MERN.</p>
+         happy to talk about a role, a project, or anything full-stack.</p>
       <div class="contact-links">
         <a href="mailto:abubakaarmughal@gmail.com" class="btn btn-primary">Email Me</a>
         <a href="https://github.com/muhammad-abubakar3009" class="btn btn-secondary" target="_blank" rel="noopener">GitHub ↗</a>
@@ -530,7 +520,7 @@
       <div class="contact-meta">
         <div><div class="cm-label">Primary Email</div><div class="cm-value">abubakaarmughal@gmail.com</div></div>
         <div><div class="cm-label">Location</div><div class="cm-value">Lahore, Pakistan</div></div>
-        <div><div class="cm-label">Positioning</div><div class="cm-value">Full-Stack / MERN Developer</div></div>
+        <div><div class="cm-label">Positioning</div><div class="cm-value">Full-Stack Developer</div></div>
         <div><div class="cm-label">Status</div><div class="cm-value live">● Open to Work</div></div>
       </div>
     </div>
