@@ -1,22 +1,27 @@
-# Muhammad Abubakar — Portfolio
+# Muhammad Abubakar · Portfolio
 
-A responsive, dark-and-lime portfolio built with plain HTML, CSS, and JavaScript. Compatible with GitHub Pages, with no build step.
+**Full-stack developer based in Lahore, Pakistan.** I build web applications with a focus on useful interfaces, clear backend logic, and reliable data.
 
-## Preview
-Open `index.html` in your browser, or run `python -m http.server 8000` from this folder and visit http://localhost:8000.
+### [View my live portfolio ↗](https://muhammad-abubakar3009.github.io/portfolio/)
 
-## Files
-- `index.html`: content and semantic page structure
-- `styles.css`: responsive layout, illustrations, cards, and reduced-motion support
-- `script.js`: accessible mobile navigation and current-section highlighting
+## Featured Projects
 
-## Publish to the existing repository
-Upload `index.html`, `styles.css`, and `script.js` together into the root of `muhammad-abubakar3009/portfolio`, replacing the existing index. Commit to the branch used by GitHub Pages. Keep all three files at the same level.
+| Project | Description | Code |
+| --- | --- | --- |
+| **Salon OS** | A salon management platform for appointments, clients, staff roles, and inventory. | [View repository](https://github.com/muhammad-abubakar3009/salon-operating-system) |
+| **Inventory Manager** | An inventory application with user accounts and persistent data. | [View repository](https://github.com/muhammad-abubakar3009/inventory-manager) |
+| **Library Management System** | A C++ application with ISBN search, sorting, and file-based storage. | [View repository](https://github.com/muhammad-abubakar3009/library-management-cpp) |
 
-## Content review
-Project illustrations are labeled concept visuals and are not actual application screenshots. Existing project links, contact details, education, and experience were retained from the repository. The original About section identifies Smart Resume Screening System as the final-year project, while Journey identifies Personalized Gym Workout Recommendation and Training Split Management System. Confirm the correct project before publishing. Verify degree and CGPA as well; the source currently says BSCS / 3.29.
+My portfolio also highlights eCommerce work with WordPress, Shopify, and WooCommerce.
 
-## Validation
-JavaScript syntax and static HTML checks passed: five project cards, unique IDs, one main landmark, and valid internal section links. Browser rendering and interaction checks require Chromium; see the delivery note for the preview status.
+## About This Portfolio
 
-Google Fonts supplies Manrope and JetBrains Mono. System sans-serif and monospace fonts provide fallbacks when offline.
+Built with **HTML, CSS, and JavaScript** and hosted on **GitHub Pages**. The site has a responsive layout, mobile navigation, keyboard focus styles, and reduced-motion support.
+
+To preview it locally, open `index.html` in your browser. No installation or build step is required.
+
+## Contact
+
+- **Email:** [abubakaarmughal@gmail.com](mailto:abubakaarmughal@gmail.com)
+- **LinkedIn:** [muhammad-abubakar3009](https://www.linkedin.com/in/muhammad-abubakar3009/)
+- **GitHub:** [muhammad-abubakar3009](https://github.com/muhammad-abubakar3009)
